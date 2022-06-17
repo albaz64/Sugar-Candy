@@ -4,6 +4,8 @@ Eucalyptus Drop is an enhanced fork of SDDM Sugar Candy by Marian Arlt.
 
 This theme focuses on a straightforward user experience and superb functionality while offering a great degree of customisation.
 
+![Out-of-the-box configuration](Previews/sddm-eucalyptus-drop.png)
+
 Eucalyptus Drop should work on any SDDM installation / Linux distribution, provided dependencies are met.
 
 All controls use the [latest Qt Quick Controls 2](http://doc.qt.io/qt-5/qtquickcontrols2-index.html) for [increased performance](https://blog.qt.io/blog/2015/03/31/qt-quick-controls-for-embedded/) even on low-end or embedded systems.
