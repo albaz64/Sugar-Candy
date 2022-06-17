@@ -22,7 +22,7 @@ If for some reason you cannot find the category named "Login Screen (SDDM)" in y
 
 Download the latest release zip and extract the contents to the theme directory of SDDM:
 
-`$ unzip -d /usr/share/sddm/themes/ sddm-eucalyptus-drop-v1.0.1.zip`
+`$ sddmthemeinstaller --install sddm-eucalyptus-drop-v1.0.1.zip`
 
 This will extract all the files to a folder called "eucalyptus-drop" inside of the themes directory of SDDM.
 
