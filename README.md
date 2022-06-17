@@ -20,7 +20,7 @@ If for some reason you cannot find the category named "Login Screen (SDDM)" in y
 
 Download the latest release zip and extract the contents to the theme directory of SDDM:
 
-`$ unzip -d /usr/share/sddm/themes/eucalyptus-drop sddm-eucalyptus-drop-v1.0.0.zip`
+`$ unzip -d /usr/share/sddm/themes/ sddm-eucalyptus-drop-v1.0.1.zip`
 
 This will extract all the files to a folder called "eucalyptus-drop" inside of the themes directory of SDDM.
 
@@ -60,7 +60,7 @@ In the `[Theme]` section simply add the themes name to this line: `Current=eucal
 You can customise Eucalyptus Drop by editing its `theme.conf`. You can change the colours and images used, the time and date formats, the appearance of the whole interface and even how it works.
 
 It's annoying to log out and back in every time you want to see a change made to your `theme.conf`. To preview your changes from within your running desktop environment session simply run:
-`sddm-greeter --test-mode --theme /usr/share/sddm/themes/sugar-candy`
+`sddm-greeter --test-mode --theme /usr/share/sddm/themes/eucalyptus-drop`
 
 And as if that wouldn't still be enough you can **translate every single button and label** because SDDM still [needs your help](https://github.com/sddm/sddm/wiki/Localization) to make localisation as complete as possible!
 
