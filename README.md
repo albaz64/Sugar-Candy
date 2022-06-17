@@ -18,13 +18,13 @@ If for some reason you cannot find the category named "Login Screen (SDDM)" in y
 
 ### From other desktop environments
 
-Download the tar archive from the files tab of this web page and extract the contents to the theme directory of SDDM *(change the path for the downloaded file if necessary)*:
+Download the latest release zip and extract the contents to the theme directory of SDDM:
 
-`$ sudo tar -xzvf ~/eucalyptus-drop.tar.gz -C /usr/share/sddm/themes`
+`$ unzip -d /usr/share/sddm/themes/eucalyptus-drop sddm-eucalyptus-drop-v1.0.0.zip`
 
-This will extract all the files to a folder called "sugar‑candy" inside of the themes directory of SDDM.
+This will extract all the files to a folder called "eucalyptus-drop" inside of the themes directory of SDDM.
 
-After that you will have to point SDDM to the new theme by editing its config file, preferrably at `/etc/sddm.conf` *(create if necessary)*. You can take the default config file of SDDM as a reference which might be found at: `/usr/lib/sddm/sddm.conf.d/sddm.conf`.
+After that you will have to point SDDM to the new theme by editing its config file, preferrably at `/etc/sddm.conf.d/sddm.conf` *(create if necessary)*. You can take the default config file of SDDM as a reference which might be found at: `/usr/lib/sddm/sddm.conf.d/sddm.conf`.
 
 In the `[Theme]` section simply add the themes name to this line: `Current=eucalyptus-drop`. If you don't care for SDDM options and you had to create the file from blank just add these two lines and save it. Also see the [Arch wiki on SDDM](https://wiki.archlinux.org/index.php/SDDM).
 
