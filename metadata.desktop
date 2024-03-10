@@ -14,3 +14,4 @@ TranslationsDirectory=translations
 Email=Matt.Jolly@footclan.ninja
 Theme-Id=eucalyptus-drop
 Theme-API=2.11
+QtVersion=6
