@@ -59,6 +59,7 @@ Item {
                 icon.width: parent.height * 0.25
                 enabled: false
                 icon.color: root.palette.text
+                flat: true
                 icon.source: Qt.resolvedUrl("../Assets/User.svgz")
         }
 
