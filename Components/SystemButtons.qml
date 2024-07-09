@@ -102,7 +102,7 @@ RowLayout {
 // A theme for the Simple Display Desktop Manager.
 //
 // Copyright (C) 2018–2020 Marian Arlt
-// Copyright (C)  <matt.jolly@footclan.ninja>
+// Copyright (C) 2020-2024 <matt.jolly@footclan.ninja>
 //
 // SDDM Eucalyptus Drop is free software: you can redistribute it and/or modify it
 // under the terms of the GNU General Public License as published by the
