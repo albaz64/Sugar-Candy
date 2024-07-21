@@ -5,7 +5,7 @@ import QtQuick.Controls 2.4
 Item {
     id: usernameField
 
-    property var selectedUser: selectUser.currentIndex
+    property int selectedUser: selectUser.currentIndex
     property alias user: username.text
 
     height: root.font.pointSize * 4.5
@@ -111,7 +111,7 @@ Item {
 
         popup: Popup {
             y: parent.height - username.height / 3
-            rightMargin: config.ForceRightToLeft == "true" ? usernameField.width / 2 : undefined
+            rightMargin: config.ForceRightToLeft === "true" ? usernameField.width / 2 : undefined
             width: usernameField.width
             implicitHeight: contentItem.implicitHeight
             padding: 10
@@ -160,7 +160,7 @@ Item {
     TextField {
         id: username
 
-        text: config.ForceLastUser == "true" ? selectUser.currentText : null
+        text: config.ForceLastUser === "true" ? selectUser.currentText : null
         font.capitalization: Font.Capitalize
         anchors.centerIn: parent
         height: root.font.pointSize * 3

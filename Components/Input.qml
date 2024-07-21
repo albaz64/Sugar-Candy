@@ -21,17 +21,17 @@ Column {
         ComboBox {
             id: selectUser
 
-            property var popkey: config.ForceRightToLeft == "true" ? Qt.Key_Right : Qt.Key_Left
+            property var popkey: config.ForceRightToLeft === "true" ? Qt.Key_Right : Qt.Key_Left
 
             displayText: ""
             width: parent.height
             height: parent.height
             anchors.left: parent.left
             Keys.onPressed: {
-                if (event.key == Qt.Key_Down && !popup.opened)
+                if (event.key === Qt.Key_Down && !popup.opened)
                     username.forceActiveFocus();
 
-                if ((event.key == Qt.Key_Up || event.key == popkey) && !popup.opened)
+                if ((event.key === Qt.Key_Up || event.key === popkey) && !popup.opened)
                     popup.open();
 
             }
@@ -130,8 +130,8 @@ Column {
 
             popup: Popup {
                 y: parent.height - username.height / 3
-                x: config.ForceRightToLeft == "true" ? -loginButton.width + selectUser.width : 0
-                rightMargin: config.ForceRightToLeft == "true" ? root.padding + usernameField.width / 2 : undefined
+                x: config.ForceRightToLeft === "true" ? -loginButton.width + selectUser.width : 0
+                rightMargin: config.ForceRightToLeft === "true" ? root.padding + usernameField.width / 2 : undefined
                 width: usernameField.width
                 implicitHeight: contentItem.implicitHeight
                 padding: 10
@@ -180,9 +180,9 @@ Column {
         TextField {
             id: username
 
-            text: config.ForceLastUser == "true" ? selectUser.currentText : null
+            text: config.ForceLastUser === "true" ? selectUser.currentText : null
             font.pointSize: root.font.pointSize
-            font.capitalization: config.AllowBadUsernames == "false" ? Font.Capitalize : Font.MixedCase
+            font.capitalization: config.AllowBadUsernames === "false" ? Font.Capitalize : Font.MixedCase
             anchors.centerIn: parent
             height: root.font.pointSize * 3
             width: parent.width
@@ -267,13 +267,13 @@ Column {
             anchors.centerIn: parent
             height: root.font.pointSize * 3
             width: parent.width
-            focus: config.ForcePasswordFocus == "true" ? true : false
+            focus: config.ForcePasswordFocus === "true" ? true : false
             selectByMouse: true
             echoMode: revealSecret.checked ? TextInput.Normal : TextInput.Password
             placeholderText: config.TranslatePlaceholderPassword || textConstants.password
             horizontalAlignment: TextInput.AlignHCenter
             passwordCharacter: "•"
-            passwordMaskDelay: config.ForceHideCompletePassword == "true" ? undefined : 500
+            passwordMaskDelay: config.ForceHideCompletePassword === "true" ? undefined : 500
             renderType: Text.QtRendering
             onAccepted: loginButton.clicked()
             KeyNavigation.down: revealSecret
@@ -508,9 +508,9 @@ Column {
             text: config.TranslateLogin || textConstants.login
             height: root.font.pointSize * 3
             implicitWidth: parent.width
-            enabled: config.AllowEmptyPassword == "true" || username.text != "" && password.text != "" ? true : false
+            enabled: config.AllowEmptyPassword === "true" || username.text !== "" && password.text !== "" ? true : false
             hoverEnabled: true
-            onClicked: config.AllowBadUsernames == "false" ? sddm.login(username.text.toLowerCase(), password.text, sessionSelect.selectedSession) : sddm.login(username.text, password.text, sessionSelect.selectedSession)
+            onClicked: config.AllowBadUsernames === "false" ? sddm.login(username.text.toLowerCase(), password.text, sessionSelect.selectedSession) : sddm.login(username.text, password.text, sessionSelect.selectedSession)
             Keys.onReturnPressed: clicked()
             Keys.onEnterPressed: clicked()
             KeyNavigation.down: sessionSelect.exposeSession
@@ -591,7 +591,7 @@ Column {
 
             contentItem: Text {
                 text: parent.text
-                color: config.OverrideLoginButtonTextColour != "" ? config.OverrideLoginButtonTextColour : root.palette.highlight.hslLightness >= 0.7 ? "#444" : "white"
+                color: config.OverrideLoginButtonTextColour !== "" ? config.OverrideLoginButtonTextColour : root.palette.highlight.hslLightness >= 0.7 ? "#444" : "white"
                 font.pointSize: root.font.pointSize
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -623,7 +623,10 @@ Column {
 
         function onLoginFailed() {
             failed = true;
-            resetError.running ? resetError.stop() && resetError.start() : resetError.start();
+            if (resetError.running)
+                resetError.stop();
+
+            resetError.start();
         }
 
         target: sddm

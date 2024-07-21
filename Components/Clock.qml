@@ -23,7 +23,7 @@ Column {
         id: timeLabel
 
         function updateTime() {
-            text = new Date().toLocaleTimeString(Qt.locale(config.Locale), config.HourFormat == "long" ? Locale.LongFormat : config.HourFormat !== "" ? config.HourFormat : Locale.ShortFormat);
+            text = new Date().toLocaleTimeString(Qt.locale(config.Locale), config.HourFormat === "long" ? Locale.LongFormat : config.HourFormat !== "" ? config.HourFormat : Locale.ShortFormat);
         }
 
         anchors.horizontalCenter: parent.horizontalCenter
@@ -36,7 +36,7 @@ Column {
         id: dateLabel
 
         function updateDate() {
-            text = new Date().toLocaleDateString(Qt.locale(config.Locale), config.DateFormat == "short" ? Locale.ShortFormat : config.DateFormat !== "" ? config.DateFormat : Locale.LongFormat);
+            text = new Date().toLocaleDateString(Qt.locale(config.Locale), config.DateFormat === "short" ? Locale.ShortFormat : config.DateFormat !== "" ? config.DateFormat : Locale.LongFormat);
         }
 
         anchors.horizontalCenter: parent.horizontalCenter

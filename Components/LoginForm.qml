@@ -20,7 +20,7 @@ ColumnLayout {
 
         Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
         Layout.preferredHeight: root.height / 4
-        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
+        Layout.leftMargin: p !== "0" ? a === "left" ? -p : a === "right" ? p : 0 : 0
     }
 
     Input {
@@ -28,7 +28,7 @@ ColumnLayout {
 
         Layout.alignment: Qt.AlignVCenter
         Layout.preferredHeight: root.height / 10
-        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
+        Layout.leftMargin: p !== "0" ? a === "left" ? -p : a === "right" ? p : 0 : 0
         Layout.topMargin: virtualKeyboardActive ? -height * 1.5 : 0
     }
 
@@ -38,7 +38,7 @@ ColumnLayout {
         Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
         Layout.preferredHeight: root.height / 4
         Layout.maximumHeight: root.height / 4
-        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
+        Layout.leftMargin: p !== "0" ? a === "left" ? -p : a === "right" ? p : 0 : 0
         exposedSession: input.exposeSession
     }
 
