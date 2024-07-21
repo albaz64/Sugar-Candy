@@ -13,7 +13,7 @@ Pane {
     height: config.ScreenHeight || Screen.height
     width: config.ScreenWidth || Screen.ScreenWidth
 
-    LayoutMirroring.enabled: config.ForceRightToLeft == "true" ? true : Qt.application.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.enabled: config.ForceRightToLeft === "true" ? true : Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
     padding: config.ScreenPadding
@@ -25,28 +25,28 @@ Pane {
 
     font.family: config.Font
     font.pointSize: config.FontSize !== "" ? config.FontSize :
-        Screen.primaryOrientation == Qt.PortraitOrientation ? parseInt(height / 160) : parseInt(height / 80)
+        Screen.primaryOrientation === Qt.PortraitOrientation ? parseInt(height / 160) : parseInt(height / 80)
     focus: true
 
-    property bool leftleft: config.HaveFormBackground == "true" &&
-                            config.PartialBlur == "false" &&
-                            config.FormPosition == "left" &&
-                            config.BackgroundImageHAlignment == "left"
+    property bool leftleft: config.HaveFormBackground === "true" &&
+                            config.PartialBlur === "false" &&
+                            config.FormPosition === "left" &&
+                            config.BackgroundImageHAlignment === "left"
 
-    property bool leftcenter: config.HaveFormBackground == "true" &&
-                              config.PartialBlur == "false" &&
-                              config.FormPosition == "left" &&
-                              config.BackgroundImageHAlignment == "center"
+    property bool leftcenter: config.HaveFormBackground === "true" &&
+                              config.PartialBlur === "false" &&
+                              config.FormPosition === "left" &&
+                              config.BackgroundImageHAlignment === "center"
 
-    property bool rightright: config.HaveFormBackground == "true" &&
-                              config.PartialBlur == "false" &&
-                              config.FormPosition == "right" &&
-                              config.BackgroundImageHAlignment == "right"
+    property bool rightright: config.HaveFormBackground === "true" &&
+                              config.PartialBlur === "false" &&
+                              config.FormPosition === "right" &&
+                              config.BackgroundImageHAlignment === "right"
 
-    property bool rightcenter: config.HaveFormBackground == "true" &&
-                               config.PartialBlur == "false" &&
-                               config.FormPosition == "right" &&
-                               config.BackgroundImageHAlignment == "center"
+    property bool rightcenter: config.HaveFormBackground === "true" &&
+                               config.PartialBlur === "false" &&
+                               config.FormPosition === "right" &&
+                               config.BackgroundImageHAlignment === "center"
     Component.onCompleted: {
         Orientation.getOrientation()
         console.log('called orientation')
@@ -73,8 +73,8 @@ Pane {
             anchors.fill: form
             anchors.centerIn: form
             color: root.palette.window
-            visible: config.HaveFormBackground == "true" ? true : false
-            opacity: config.PartialBlur == "true" ? 0.3 : 1
+            visible: config.HaveFormBackground === "true" ? true : false
+            opacity: config.PartialBlur === "true" ? 0.3 : 1
             z: 1
         }
 
@@ -83,17 +83,17 @@ Pane {
             height: parent.height
             // If in portrait orientation we should take up half instead of 40% of the screen to avoid crowding
             width: parent.width / 2.5
-            anchors.horizontalCenter: config.FormPosition == "center" ? parent.horizontalCenter : undefined
-            anchors.left: config.FormPosition == "left" ? parent.left : undefined
-            anchors.right: config.FormPosition == "right" ? parent.right : undefined
-            virtualKeyboardActive: virtualKeyboard.state == "visible" ? true : false
+            anchors.horizontalCenter: config.FormPosition === "center" ? parent.horizontalCenter : undefined
+            anchors.left: config.FormPosition === "left" ? parent.left : undefined
+            anchors.right: config.FormPosition === "right" ? parent.right : undefined
+            virtualKeyboardActive: virtualKeyboard.state === "visible" ? true : false
             z: 1
         }
 
         Button {
             id: vkb
             onClicked: virtualKeyboard.switchState()
-            visible: virtualKeyboard.status == Loader.Ready && config.ForceHideVirtualKeyboardButton == "false"
+            visible: virtualKeyboard.status == Loader.Ready && config.ForceHideVirtualKeyboardButton === "false"
             anchors.bottom: parent.bottom
             anchors.bottomMargin: implicitHeight
             anchors.horizontalCenter: form.horizontalCenter
@@ -198,7 +198,7 @@ Pane {
             id: backgroundImage
 
             height: parent.height
-            width: config.HaveFormBackground == "true" && config.FormPosition != "center" && config.PartialBlur != "true" ? parent.width - formBackground.width : parent.width
+            width: config.HaveFormBackground === "true" && config.FormPosition !== "center" && config.PartialBlur !== "true" ? parent.width - formBackground.width : parent.width
             anchors.left: leftleft ||
                           leftcenter ?
                                 formBackground.right : undefined
@@ -207,18 +207,18 @@ Pane {
                            rightcenter ?
                                 formBackground.left : undefined
 
-            horizontalAlignment: config.BackgroundImageHAlignment == "left" ?
+            horizontalAlignment: config.BackgroundImageHAlignment === "left" ?
                                  Image.AlignLeft :
-                                 config.BackgroundImageHAlignment == "right" ?
+                                 config.BackgroundImageHAlignment === "right" ?
                                  Image.AlignRight : Image.AlignHCenter
 
-            verticalAlignment: config.BackgroundImageVAlignment == "top" ?
+            verticalAlignment: config.BackgroundImageVAlignment === "top" ?
                                Image.AlignTop :
-                               config.BackgroundImageVAlignment == "bottom" ?
+                               config.BackgroundImageVAlignment === "bottom" ?
                                Image.AlignBottom : Image.AlignVCenter
 
             source: config.background || config.Background
-            fillMode: config.ScaleImageCropped == "true" ? Image.PreserveAspectCrop : Image.PreserveAspectFit
+            fillMode: config.ScaleImageCropped === "true" ? Image.PreserveAspectCrop : Image.PreserveAspectFit
             asynchronous: true
             cache: true
             clip: true
@@ -238,20 +238,20 @@ Pane {
             height: parent.height
             anchors.centerIn: form
             sourceRect: Qt.rect(x,y,width,height)
-            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
+            visible: config.FullBlur === "true" || config.PartialBlur === "true" ? true : false
         }
 
         GaussianBlur {
             id: blur
 
             height: parent.height
-            width: config.FullBlur == "true" ? parent.width : form.width
-            source: config.FullBlur == "true" ? backgroundImage : blurMask
+            width: config.FullBlur === "true" ? parent.width : form.width
+            source: config.FullBlur === "true" ? backgroundImage : blurMask
             radius: config.BlurRadius
             samples: config.BlurRadius * 2 + 1
             cached: true
-            anchors.centerIn: config.FullBlur == "true" ? parent : form
-            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
+            anchors.centerIn: config.FullBlur === "true" ? parent : form
+            visible: config.FullBlur === "true" || config.PartialBlur === "true" ? true : false
         }
     }
 }
