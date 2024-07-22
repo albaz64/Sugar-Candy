@@ -4,7 +4,7 @@ Eucalyptus Drop is an enhanced fork of SDDM Sugar Candy by Marian Arlt.
 
 This theme focuses on a straightforward user experience and superb functionality while offering a great degree of customisation.
 
-![Out-of-the-box configuration](Previews/sddm-eucalyptus-drop.png)
+![Out-of-the-box configuration](Previews/sddm.png)
 
 Eucalyptus Drop should work on any SDDM installation / Linux distribution, provided dependencies are met.
 
@@ -12,28 +12,55 @@ All controls use the [latest Qt Quick Controls 2](http://doc.qt.io/qt-5/qtquickc
 
 ## Installation
 
+**We can use a more direct approach that works on all distributions!**
+
 ### From within KDE Plasma
 
-If you are on [KDE Plasma](https://www.kde.org/plasma-desktop)—by default [Manjaro](https://manjaro.org/), [OpenSuse](https://www.opensuse.org/), [Neon](https://neon.kde.org/), [Kubuntu](https://kubuntu.org/), [KaOS](https://kaosx.us/) or [Chakra](https://www.chakralinux.org/) for example—you are lucky and can simply go to your system settings and under "Startup and Shutdown" **→** "Login Screen (SDDM)" click "Get New Theme". From there search for "Eucalyptus Drop" and install.
+~~If you are on [KDE Plasma](https://www.kde.org/plasma-desktop)—by default [Garuda](https://garudalinux.org) [Manjaro](https://manjaro.org), [openSUSE](https://www.opensuse.org), [neon](https://neon.kde.org), [Kubuntu](https://kubuntu.org) or [KaOS](https://kaosx.us) for example—you are lucky and can simply go to your system settings and under "Startup and Shutdown" **→** "Login Screen (SDDM)" click "Get New Theme". From there search for "Eucalyptus Drop" and install.~~
 
 If for some reason you cannot find the category named "Login Screen (SDDM)" in your system settings then you are missing the module `sddm-kcm`. Install this with your package manager first.
 
 ### From other desktop environments
 
-Download the latest release zip and extract the contents to the theme directory of SDDM:
+~~Download the latest release zip and extract the contents to the theme directory of SDDM:~~
 
-`$ sddmthemeinstaller --install sddm-eucalyptus-drop-v1.0.1.zip`
+~~`$ sddmthemeinstaller --install sddm-eucalyptus-drop-v1.0.1.zip`~~
 
-This will extract all the files to a folder called "eucalyptus-drop" inside of the themes directory of SDDM.
+~~This will extract all the files to a folder called "eucalyptus-drop" inside of the themes directory of SDDM.~~
 
 After that you will have to point SDDM to the new theme by editing its config file, preferrably at `/etc/sddm.conf.d/sddm.conf` *(create if necessary)*. You can take the default config file of SDDM as a reference which might be found at: `/usr/lib/sddm/sddm.conf.d/sddm.conf`.
 
-In the `[Theme]` section simply add the themes name to this line: `Current=eucalyptus-drop`. If you don't care for SDDM options and you had to create the file from scratch, just add those two lines and save it:
+~~In the `[Theme]` section simply add the themes name to this line: `Current=eucalyptus-drop`. If you don't care for SDDM options and you had to create the file from scratch, just add those two lines and save it:~~
 
 ```conf
 [Theme]
 Current=eucalyptus-drop
 ```
+
+### For All Distributions
+
+1. First, install [git-lfs](https://git-lfs.com), then clone the repository:
+
+   ```bash
+   git clone https://github.com/albaz64/Sugar-Candy.git <Theme name>
+   ```
+
+2. Move the theme to the SDDM themes directory:
+
+   ```bash
+   sudo mv <Theme name> /usr/share/sddm/themes
+   ```
+
+3. Edit your `/etc/sddm.conf` or `/etc/sddm.conf.d` file:
+
+   ```ini
+   [Theme]
+   Current=<Theme name>
+   ```
+
+Replace `<Theme name>` with any name you choose, such as "Candy".
+
+Then you can edit `theme.conf` as you like.
 
 ## Dependencies
 
@@ -93,7 +120,7 @@ And as if that wouldn't still be enough you can **translate every single button 
 | `InterfaceShadowOpacity`         | `"0.6"`                      | Double between 0 and 1. Alpha channel of the shadow behind the user and session selection background. Decrease or increase if it looks bad on your background.                                                                                                                                                                                 |
 | `RoundCorners`                   | `"20"`                       | Integer in pixels. Radius of the input fields and the login button. Empty for square. Can cause bad antialiasing of the fields.                                                                                                                                                                                                                |
 | `ScreenPadding`                  | `"0"`                        | Integer in pixels. Increase or delete this to have a padding of colour BackgroundColour all around your screen. This makes your login greeter appear as if it was a canvas. Cool!                                                                                                                                                              |
-| `Font`                           | `"Noto Sans"`                | If you want to choose a custom font it will have to be available to the X root user. See https://wiki.archlinux.org/index.php/fonts#Manual_installation                                                                                                                                                                                        |
+| `Font`                           | `"Noto Sans"`                | If you want to choose a custom font it will have to be available to the X root user. See <https://wiki.archlinux.org/index.php/fonts#Manual_installation>                                                                                                                                                                                        |
 | `FontSize`                       | `""`                         | Only set a fixed value if fonts are way too small for your resolution. Preferrably kept empty.                                                                                                                                                                                                                                                 |
 | `ForceRightToLeft`               | `"false"`                    | Revert the layout either because you would like the login to be on the right hand side or SDDM won't respect your language locale for some reason.                                                                                                                                                                                             |
 | `ForceLastUser`                  | `"true"`                     | Have the last successfully logged in user appear automatically in the username field.                                                                                                                                                                                                                                                          |
@@ -104,15 +131,15 @@ And as if that wouldn't still be enough you can **translate every single button 
 | `AllowEmptyPassword`             | `"false"`                    | Enable login for users without a password. This is discouraged. Makes the login button always enabled.                                                                                                                                                                                                                                         |
 | `AllowBadUsernames`              | `"false"`                    | Do not change this! Uppercase letters are generally not allowed in usernames. This option is only for systems that differ from this standard! Also shows username as is instead of capitalized.                                                                                                                                                |
 | `Locale`                         | `""`                         | The time and date locale should usually be set in your system settings. Only hard set this if something is not working by default or you want a seperate locale setting in your login screen.                                                                                                                                                  |
-| `HourFormat`                     | `"HH:mm"`                    | Defaults to Locale.ShortFormat - Accepts "long" or a custom string like "hh:mm A". See http://doc.qt.io/qt-5/qml-qtqml-date.html                                                                                                                                                                                                               |
-| `DateFormat`                     | `"dddd, d of MMMM"`          | Defaults to Locale.LongFormat - Accepts "short" or a custom string like "dddd, d 'of' MMMM". See http://doc.qt.io/qt-5/qml-qtqml-date.html                                                                                                                                                                                                     |
+| `HourFormat`                     | `"HH:mm"`                    | Defaults to Locale.ShortFormat - Accepts "long" or a custom string like "hh:mm A". See <http://doc.qt.io/qt-5/qml-qtqml-date.html>                                                                                                                                                                                                               |
+| `DateFormat`                     | `"dddd, d of MMMM"`          | Defaults to Locale.LongFormat - Accepts "short" or a custom string like "dddd, d 'of' MMMM". See <http://doc.qt.io/qt-5/qml-qtqml-date.html>                                                                                                                                                                                                     |
 | `HeaderText`                     | `"Welcome!"`                 | Header can be empty to not display any greeting at all. Keep it short.                                                                                                                                                                                                                                                                         |
 
 ### Localisation
 
 SDDM may lack proper translation for every element; the theme defaults to SDDM translations.
 
-Please help translate SDDM into your language: https://github.com/sddm/sddm/wiki/Localization.
+Please help translate SDDM into your language: <https://github.com/sddm/sddm/wiki/Localization>.
 
 You may use the configuration items below to override a bad translation.
 
