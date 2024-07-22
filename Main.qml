@@ -23,6 +23,7 @@ import QtQuick 2.11
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.11
 import QtQuick.Window 2.11
+import "Script/randomImage.js" as BGList
 
 Pane {
     id: root
@@ -232,17 +233,23 @@ Pane {
             anchors.right: rightright || rightcenter ? formBackground.left : undefined
             horizontalAlignment: config.BackgroundImageHAlignment === "left" ? Image.AlignLeft : config.BackgroundImageHAlignment === "right" ? Image.AlignRight : Image.AlignHCenter
             verticalAlignment: config.BackgroundImageVAlignment === "top" ? Image.AlignTop : config.BackgroundImageVAlignment === "bottom" ? Image.AlignBottom : Image.AlignVCenter
-            source: config.background || config.Background
+            source: config.Background
             fillMode: config.ScaleImageCropped === "true" ? Image.PreserveAspectCrop : Image.PreserveAspectFit
             asynchronous: true
             cache: true
             clip: true
             mipmap: true
-        }
 
-        MouseArea {
-            anchors.fill: backgroundImage
-            onClicked: parent.forceActiveFocus()
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    parent.forceActiveFocus();
+                    if (config.RandomBackground === "true" && mouse.button === Qt.LeftButton)
+                        backgroundImage.source = BGList.getRandom();
+
+                }
+            }
+
         }
 
         ShaderEffectSource {
