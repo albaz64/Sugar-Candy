@@ -15,7 +15,7 @@ const data = [$DATA];
 let usedIndices = [];
 
 function getRandom() {
-    let prefix = 'Backgrounds/';
+    const prefix = 'Backgrounds/';
     if (usedIndices.length === data.length) {
         usedIndices = [];
     }
