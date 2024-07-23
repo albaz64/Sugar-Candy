@@ -71,6 +71,9 @@ Then you can edit `theme.conf` as you like.
   - [`Qt Quick Layouts`](https://doc.qt.io/archives/qt-5.11/qtquicklayouts-index.html)
   - [`Qt Quick Window`](https://doc.qt.io/qt-5.11/qml-qtquick-window-screen.html)
   - [`Qt SVG`](https://doc.qt.io/archives/qt-5.11/qtsvg-index.html)
+- Qt6 (It is recommended to install the full Qt5 and Qt6 packages directly.)
+  - qt5-imageformats
+  - qt5-svg
 
 *Make sure these are installed with their required version or higher! SDDM might need an enabled system service/daemon to work. This is often done automatically during installation. Take note that a lot of standard release distros like Debian, Mint, MX, Elementary, Deepin or Ubuntu LTS are still on earlier versions. If in doubt ask in your distros forums.*
 
